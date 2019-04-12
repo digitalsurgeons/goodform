@@ -11,7 +11,7 @@ const Box = styled.div`
 function Header() {
   return (
     <Box color="white" bgcolor="palevioletred" p={1}>
-      Emotion
+      Emotion test
     </Box>
   )
 }
