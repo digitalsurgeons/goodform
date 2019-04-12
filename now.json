@@ -1,0 +1,19 @@
+{
+  "name": "goodform",
+  "version": 2,
+  "builds": [
+    { "src": "www/package.json", "use": "@now/next" },
+    { "src": "api/php/*.js", "use": "@now/php" },
+    { "src": "api/node/*.js", "use": "@now/node" }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/www/$1"
+    }
+  ]
+}
