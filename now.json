@@ -10,9 +10,7 @@
       "src": "api/php/*.php",
       "use": "@now/php",
       "config": {
-        "includeFiles": [
-          "api/php/lib/**/*.php"
-        ]
+        "includeFiles": ["api/php/lib/**/*.php"]
       }
     },
     {
@@ -31,6 +29,6 @@
     }
   ],
   "env": {
-    "sendrgid_api_key": "@sendrgid_api_key"
+    "sendgrid_api_key": "@sendrgid_api_key"
   }
 }
