@@ -2,14 +2,10 @@
 
 require 'vendor/autoload.php';
 
-use \SendGrid;
-use \SendGrid\Mail\Mail;
-
 function send($emailTo, $content) {
-    $email = new Mail();
-    $email->setFrom("noreply@goodform.io", "Goodform");
+    $email = new \SendGrid\Mail\Mail();
+    $email->setFrom("goodform@digitalsurgeons.dev", "Goodform");
     $email->setSubject("Goodform Submission");
-
     if (is_array($emailTo)) {
         foreach ($emailTo as $email);
         $email->addTo($email);
