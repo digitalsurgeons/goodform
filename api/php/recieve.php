@@ -33,3 +33,5 @@ foreach($iterator as $key=>$value) {
 $emailContent = $emailContent . "\n" . $emailContentFooter;
 
 send($to_email, $emailContent);
+
+echo "success";
