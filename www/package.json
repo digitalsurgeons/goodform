@@ -2,13 +2,27 @@
   "name": "goodform",
   "license": "MIT",
   "dependencies": {
+    "@emotion/core": "^10.0.10",
+    "@emotion/styled": "^10.0.10",
+    "@material-ui/system": "^3.0.0-alpha.2",
+    "@zeit/next-typescript": "^1.1.1",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^8.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
   "scripts": {
+    "build": "next build",
     "dev": "next",
-    "now-build": "next build"
+    "now-build": "next build",
+    "start": "next start",
+    "type-check": "tsc"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.3",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
+    "babel-plugin-emotion": "^10.0.9",
+    "typescript": "^3.4.3"
   }
 }
