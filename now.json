@@ -2,9 +2,24 @@
   "name": "goodform",
   "version": 2,
   "builds": [
-    { "src": "www/package.json", "use": "@now/next" },
-    { "src": "api/php/*.php", "use": "@now/php", "config": { "includeFiles": ["api/php/vendor/**/*.php"]} },
-    { "src": "api/node/*.js", "use": "@now/node" }
+    {
+      "src": "www/package.json",
+      "use": "@now/next"
+    },
+    {
+      "src": "api/php/*.php",
+      "use": "@now/php",
+      "config": {
+        "includeFiles": [
+          "api/php/vendor/**/*.php",
+          "api/php/lib/**/*.php"
+        ]
+      }
+    },
+    {
+      "src": "api/node/*.js",
+      "use": "@now/node"
+    }
   ],
   "routes": [
     {
