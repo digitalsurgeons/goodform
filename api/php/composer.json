@@ -1,0 +1,14 @@
+{
+    "name": "digitalsurgeons/goodform-send",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Poulin",
+            "email": "dan.poulin@digitalsurgeons.com"
+        }
+    ],
+    "require": {
+        "sendgrid/sendgrid": "^7.2"
+    }
+}

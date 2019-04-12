@@ -3,7 +3,7 @@
   "version": 2,
   "builds": [
     { "src": "www/package.json", "use": "@now/next" },
-    { "src": "api/php/*.js", "use": "@now/php" },
+    { "src": "api/php/*.php", "use": "@now/php", "config": { "includeFiles": ["api/php/vendor/**/*.php"]} },
     { "src": "api/node/*.js", "use": "@now/node" }
   ],
   "routes": [
