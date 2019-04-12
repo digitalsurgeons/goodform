@@ -29,5 +29,8 @@
       "src": "/(.*)",
       "dest": "/www/$1"
     }
-  ]
+  ],
+  "env": {
+    "sendrgid_api_key": "@sendrgid_api_key"
+  }
 }

@@ -2,10 +2,14 @@
 
 require 'vendor/autoload.php';
 
+use \SendGrid;
+use \SendGrid\Mail\Mail;
+
 function send($emailTo, $content) {
-    $email = new \SendGrid\Mail\Mail();
+    $email = new Mail();
     $email->setFrom("noreply@goodform.io", "Goodform");
     $email->setSubject("Goodform Submission");
+
     if (is_array($emailTo)) {
         foreach ($emailTo as $email);
         $email->addTo($email);
@@ -16,7 +20,7 @@ function send($emailTo, $content) {
     $email->addContent("text/plain", $content);
 
     try {
-        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        $sendgrid = new SendGrid(getenv('sendgrid_api_key'));
 
         $response = $sendgrid->send($email);
 
