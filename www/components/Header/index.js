@@ -1,4 +1,19 @@
-import { palette, spacing, typography } from '@material-ui/system'
+import React from 'react'
 import styled from '@emotion/styled'
+import { palette, spacing } from '@material-ui/system'
+// import NoSsr from '@material-ui/core/NoSsr';
 
-export default () => <div>hi</div>
+const Box = styled.div`
+  ${palette}
+  ${spacing}
+`
+
+function Header() {
+  return (
+    <Box color="white" bgcolor="palevioletred" p={1}>
+      Emotion
+    </Box>
+  )
+}
+
+export default Header

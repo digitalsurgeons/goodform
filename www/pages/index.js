@@ -1,5 +1,5 @@
-import Header from '../components/Header'
+import Page from '../layouts'
 
-const Page = () => <Header />
+const Home = () => <Page />
 
-export default Page
+export default Home
