@@ -1,4 +1,4 @@
 <?php
 
-var_dump(getenv('FIREBASE_AUTH'));
+var_dump(getenv('firebase_auth'));
 die();
