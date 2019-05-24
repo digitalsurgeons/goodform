@@ -6,7 +6,7 @@
  *
  * @package   SendGrid\Tests
  * @author    Elmer Thomas <dx@sendgrid.com>
- * @copyright 2018 SendGrid
+ * @copyright 2018-19 Twilio SendGrid
  * @license   https://opensource.org/licenses/MIT The MIT License
  * @version   GIT: <git_id>
  * @link      http://packagist.org/packages/sendgrid/sendgrid
@@ -70,4 +70,15 @@ class MailTest_Mail extends \PHPUnit\Framework\TestCase
             '{"name":"\\"O\'Keeffe, John \\\\\\"Billy\\\\\\"\\"","email":"test@example.com"}'
         );
     }
+    
+    /**
+     * This method tests TypeException for wrong email address
+     *
+     * @expectedException \SendGrid\Mail\TypeException
+     */
+    public function testEmailAddress()
+    {
+        $email = new EmailAddress();
+        $email->setEmailAddress('test@example.com@wrong');
+    }    
 }

@@ -29,9 +29,6 @@
     }
   ],
   "env": {
-    "sendgrid_api_key": "@sendgrid_api_key",
-    "airtable_api_key": "@airtable_api_key",
-    "airtable_base_id": "@airtable_base_id",
     "firebase_auth": "@goodform-auth"
   }
 }
