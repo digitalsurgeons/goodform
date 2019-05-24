@@ -45,18 +45,22 @@ function Index() {
     }
   }
 
+  const login = user.email ? (
+    <p>Signed in</p>
+  ) : (
+    <p>
+      <a onClick={signIn} href="#">
+        Sign in with GitHub
+      </a>
+    </p>
+  )
+
   return (
     <Layout>
       <h1>Hello Next.js 👋</h1>
+      {login}
       <p>
-        <a onClick={signIn} href="#">
-          Sign in with GitHub
-        </a>
-      </p>
-      <p>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
+        <a href="/logout">Logout</a>
       </p>
     </Layout>
   )
