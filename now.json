@@ -30,8 +30,7 @@
   ],
   "env": {
     "sendgrid_api_key": "@sendgrid_api_key",
-    "firebase_default_url": "@firebase_default_url",
-    "firebase_default_path": "@firebase_default_path",
-    "firebase_default_token": "@firebase_default_token"
+    "airtable_api_key": "@airtable_api_key",
+    "airtable_base_id": "@airtable_base_id",
   }
 }

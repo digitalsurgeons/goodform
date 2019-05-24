@@ -10,6 +10,6 @@
     ],
     "require": {
         "sendgrid/sendgrid": "^7.2",
-        "ktamas77/firebase-php": "^2.2"
+        "sleiman/airtable-php": "^2.2"
     }
 }
