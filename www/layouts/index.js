@@ -1,4 +1,5 @@
 import { ThemeProvider } from 'emotion-theming'
+import { Global, css } from '@emotion/core'
 import Header from '../components/Header'
 import Head from 'next/head'
 
@@ -73,6 +74,14 @@ export default ({ children }) => (
         }}
       />
     </Head>
+    <Global
+      styles={css`
+        * {
+          box-sizing: border-box;
+          font-family: 'Graphik';
+        }
+      `}
+    />
     <Header />
     {children}
   </ThemeProvider>
