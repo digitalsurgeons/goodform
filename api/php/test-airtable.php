@@ -1,5 +1,7 @@
 <?php
 
+require './lib/vendor/autoload.php';
+
 use TANIOS\Airtable\Airtable;
 
 $airtable = new Airtable([
