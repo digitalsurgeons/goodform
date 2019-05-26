@@ -67,6 +67,6 @@ foreach($iterator as $key=>$value) {
 $emailContent = $emailContent . "\n" . $emailContentFooter;
 
 $update = update($database, $_POST['goodform_id']);
-// send($to_email, $emailContent);
+send($to_email, $emailContent);
 
 echo "success";
