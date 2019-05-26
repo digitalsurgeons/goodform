@@ -61,7 +61,7 @@ function Header() {
   }
 
   return (
-    <Container>
+    <div>
       <Head>
         <Link href="/">
           <a>
@@ -73,7 +73,7 @@ function Header() {
           {authBtn}
         </AuthButton>
       </Head>
-    </Container>
+    </div>
   )
 }
 
