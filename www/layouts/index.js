@@ -68,6 +68,11 @@ const Layout = ({ theme, children }) => {
           * {
             font-family: Graphik;
           }
+          body {
+            background-color: #F8F9FC;
+            color: ${theme.palette.primary.main};
+          }
+          
           `
           }}
         />
