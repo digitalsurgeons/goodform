@@ -21,13 +21,14 @@ function Header() {
       messagingSenderId: '1090475289248',
       appId: '1:1090475289248:web:9464f7c31608f743'
     })
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        setUser(user)
-      }
-    })
   }
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      setUser(user)
+    }
+  })
+
   function auth() {
     if (!user.email) {
       firebase
