@@ -2,13 +2,15 @@
 
 require_once 'lib/vendor/autoload.php';
 
+file_put_contents('/tmp/auth.json', base64_decode( getenv('firebase_auth') ));
+
 require 'lib/send.php';
 require 'lib/verify.php';
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 
-$serviceAccount = ServiceAccount::fromJsonFile('/Users/coryzibell/Downloads/goodform-d0096-firebase-adminsdk-jf6li-91c358b71a.json');
+$serviceAccount = ServiceAccount::fromJsonFile('/tmp/auth.json');
 
 $firebase = (new Factory)
     ->withServiceAccount($serviceAccount)
