@@ -5,7 +5,7 @@ import { Head, AuthButton, Avatar } from './styles'
 import 'firebase/auth'
 import 'firebase/firestore'
 import '@fortawesome/fontawesome-free/js/all'
-import { Container } from '../../lib/helpers'
+import Container from '@material-ui/core/Container'
 
 function Header() {
   const [user, setUser] = useState({})
@@ -61,7 +61,7 @@ function Header() {
   }
 
   return (
-    <Container>
+    <Container maxWidth="md">
       <Head>
         <Link href="/">
           <a>

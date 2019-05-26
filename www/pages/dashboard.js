@@ -6,6 +6,10 @@ import 'firebase/database'
 import Router from 'next/router'
 import Link from 'next/link'
 import Layout from '../layouts'
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import Card from '@material-ui/core/Card'
+import Button from '@material-ui/core/Button'
 
 export default () => {
   const [forms, setForms] = useState({})
@@ -38,10 +42,13 @@ export default () => {
   })
   return (
     <Layout>
-      <h1>Dashboard</h1>
-      <Link href="/create">
-        <a>Create Form</a>
-      </Link>
+      <Container maxWidth="md">
+        <h1>Dashboard</h1>
+        <Link href="/create">
+          <a>Create Form</a>
+        </Link>
+        <Button>hi</Button>
+      </Container>
     </Layout>
   )
 }
