@@ -13,6 +13,13 @@ use Kreait\Firebase\ServiceAccount;
 
 $serviceAccount = ServiceAccount::fromJsonFile('/tmp/auth.json');
 
+if (!array_key_exists('HTTP_REFERER', $_SERVER)) {
+    http_response_code(403);
+    header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden', true, 403);
+    echo 'Could not determine the referer.';
+    die();
+}
+
 $firebase = (new Factory)
     ->withServiceAccount($serviceAccount)
     ->withDatabaseUri('https://goodform-d0096.firebaseio.com')
@@ -20,7 +27,7 @@ $firebase = (new Factory)
 
 $database = $firebase->getDatabase();
 
-$verify = verify($database, $_POST['goodform_id'], $_SERVER['HTTP_HOST']);
+$verify = verify($database, $_POST['goodform_id'], $_SERVER['HTTP_REFERER']);
 
 if ($verify['success'] == false) {
     http_response_code(403);
