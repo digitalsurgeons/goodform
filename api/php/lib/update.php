@@ -21,4 +21,16 @@ function update($database, $documentId) {
 
     $transaction->set($rateReference, $newValue);
   });
+
+  $countReference = $database->getReference('forms/'.$documentId.'/count');
+
+  $database->runTransaction(function (Transaction $transaction) use ($countReference) {
+
+    $rateSnapshot = $transaction->snapshot($countReference);
+
+    $value = $countReference->getValue() ?: 0;
+    $newValue = ++$value;
+
+    $transaction->set($countReference, $newValue);
+  });
 }
