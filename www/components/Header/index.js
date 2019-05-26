@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import firebase from 'firebase/app'
 import Container from '@material-ui/core/Container'
 import { Head, AuthButton, Avatar } from './styles'
@@ -62,9 +63,11 @@ function Header() {
   return (
     <Container>
       <Head>
-        <a href="/">
-          <img src="/static/logo.png" />
-        </a>
+        <Link href="/">
+          <a>
+            <img src="/static/logo.png" />
+          </a>
+        </Link>
         {profileImage}
         <AuthButton onClick={auth} href="#">
           {authBtn}
