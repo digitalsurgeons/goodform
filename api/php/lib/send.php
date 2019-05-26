@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 function send($emailTo, $content) {
     $email = new \SendGrid\Mail\Mail();

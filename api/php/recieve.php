@@ -1,6 +1,30 @@
 <?php
 
+require_once 'lib/vendor/autoload.php';
+
 require 'lib/send.php';
+require 'lib/verify.php';
+
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+
+$serviceAccount = ServiceAccount::fromJsonFile('/Users/coryzibell/Downloads/goodform-d0096-firebase-adminsdk-jf6li-91c358b71a.json');
+
+$firebase = (new Factory)
+    ->withServiceAccount($serviceAccount)
+    ->withDatabaseUri('https://goodform-d0096.firebaseio.com')
+    ->create();
+
+$database = $firebase->getDatabase();
+
+$verify = verify($database, $_POST['goodform_id'], $_POST['goodform_to'], $_SERVER['HTTP_HOST']);
+
+if ($verify['success'] == false) {
+    http_response_code(403);
+    header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden', true, 403);
+    echo $verify['message'];
+    die();
+}
 
 $to_email = $_POST['goodform_to'];
 
