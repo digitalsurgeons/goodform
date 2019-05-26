@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Container from '@material-ui/core/Container'
 import Link from 'next/link'
 import Layout from '../layouts'
 import firebase from 'firebase/app'
@@ -10,9 +9,11 @@ import nanoid from 'nanoid'
 
 export default () => {
   const [user, setUser] = useState({})
-  const [formName, setFormname] = useState('')
+  const [formName, setFormName] = useState('')
   const [domain, setDomain] = useState('')
   const [emailList, setEmailList] = useState('')
+
+  const database = firebase.database()
 
   if (!firebase.apps.length) {
     firebase.initializeApp({
@@ -24,17 +25,15 @@ export default () => {
       messagingSenderId: '1090475289248',
       appId: '1:1090475289248:web:9464f7c31608f743'
     })
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        setUser(user)
-      } else {
-        window.location = '/'
-      }
-    })
-
-    const database = firebase.database()
   }
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      setUser(user)
+    } else {
+      window.location = '/'
+    }
+  })
 
   function submit(e) {
     e.preventDefault()
@@ -46,34 +45,24 @@ export default () => {
       userId: user.uid,
       domain: domain,
       dateCreated: Date.now(),
-      enabled: true
+      enabled: true,
+      count: 0
     }
 
-    firebase
-      .database()
-      .ref('forms/' + id)
-      .set(formData)
+    database.ref('forms/' + id).set(formData)
   }
 
   return (
     <Layout>
-      <Container>
-        <form onSubmit={submit}>
-          <p>Form Name</p>
-          <input
-            type="text"
-            onKeyUp={e => setFormname(e.currentTarget.value)}
-          />
-          <p>Domain</p>
-          <input type="text" onKeyUp={e => setDomain(e.currentTarget.value)} />
-          <p>Send emails to</p>
-          <input
-            type="text"
-            onKeyUp={e => setEmailList(e.currentTarget.value)}
-          />
-          <input type="submit" value="Create Form" />
-        </form>
-      </Container>
+      <form onSubmit={submit}>
+        <p>Form Name</p>
+        <input type="text" onKeyUp={e => setFormName(e.currentTarget.value)} />
+        <p>Domain</p>
+        <input type="text" onKeyUp={e => setDomain(e.currentTarget.value)} />
+        <p>Send emails to</p>
+        <input type="text" onKeyUp={e => setEmailList(e.currentTarget.value)} />
+        <input type="submit" value="Create Form" />
+      </form>
     </Layout>
   )
 }
