@@ -6,6 +6,7 @@ file_put_contents('/tmp/auth.json', base64_decode( getenv('firebase_auth') ));
 
 require 'lib/send.php';
 require 'lib/verify.php';
+require 'lib/update.php';
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
@@ -19,16 +20,16 @@ $firebase = (new Factory)
 
 $database = $firebase->getDatabase();
 
-$verify = verify($database, $_POST['goodform_id'], $_POST['goodform_to'], $_SERVER['HTTP_HOST']);
+$verify = verify($database, $_POST['goodform_id'], $_SERVER['HTTP_HOST']);
 
 if ($verify['success'] == false) {
     http_response_code(403);
     header($_SERVER['SERVER_PROTOCOL'] . ' 403 Forbidden', true, 403);
     echo $verify['message'];
     die();
+} else {
+    $to_email = $verify['toEmail'];
 }
-
-$to_email = $_POST['goodform_to'];
 
 $date = date("M, d, Y h:i:s A");
 
@@ -58,6 +59,7 @@ foreach($iterator as $key=>$value) {
 
 $emailContent = $emailContent . "\n" . $emailContentFooter;
 
-send($to_email, $emailContent);
+$update = update($database, $_POST['goodform_id']);
+// send($to_email, $emailContent);
 
 echo "success";

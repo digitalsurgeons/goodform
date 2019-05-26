@@ -2,12 +2,9 @@
 
 require_once './lib/vendor/autoload.php';
 
-// file_put_contents('/tmp/auth.json', base64_decode( getenv('firebase_auth') ));
-
-
 use Kreait\Firebase\Query;
 
-function verify($database, $documentId, $emailValue, $domain) {
+function verify($database, $documentId, $domain) {
 
   $formReference = $database->getReference('forms/'.$documentId);
 
@@ -34,15 +31,44 @@ function verify($database, $documentId, $emailValue, $domain) {
     ];
   }
 
-  $userReference = $database->getReference('usages/'.$userId);
-
-  if ($userReference == null) {
-    $userReference->set([
-      date('Ym') => 0
-    ]);
+  if (!($formData['domain'] == $domain)) {
+    return [
+      "success" => false,
+      "message" => "The domain does not match",
+    ];
   }
 
-  die();
+  if (!array_key_exists ( 'emailList' , $formData )) {
+    return [
+      "success" => false,
+      "message" => "The form record is incomplete.",
+    ];
+  }
+
+  if (!array_key_exists ( 'userId' , $formData )) {
+    return [
+      "success" => false,
+      "message" => "The form record is incomplete.",
+    ];
+  }
+
+  $usageReference = $database->getReference('usages/'.$formData['userId'].'/'.date('Ym'))->getValue();
+
+  if ($usageReference == null) {
+    $usageReference->set(0);
+  } else {
+    if ($usageReference >= 100) {
+      return [
+        "success" => false,
+        "message" => "The account API limit has been reached.",
+      ];
+    }
+  }
+
+  return [
+    "success" => true,
+    "toEmail" => $formData['emailList']
+  ];
 
   // $newPost = $database
   //     ->getReference('forms')
