@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
 import Button from '@material-ui/core/Button'
+import CardGrid from '../components/CardGrid'
 
 const Dashboard = ({ user }) => {
   const [forms, setForms] = useState({})
@@ -50,7 +51,7 @@ const Dashboard = ({ user }) => {
         <Link href="/create">
           <a>Create Form</a>
         </Link>
-        <Button>hi</Button>
+        <CardGrid />
       </Container>
     </Layout>
   )
