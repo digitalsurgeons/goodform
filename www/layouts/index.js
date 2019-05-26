@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import Head from 'next/head'
 import { withTheme } from '@material-ui/core/styles'
 
-const Dashboard = ({ theme, children }) => {
+const Layout = ({ theme, children }) => {
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -78,4 +78,4 @@ const Dashboard = ({ theme, children }) => {
   )
 }
 
-export default withTheme(Dashboard)
+export default withTheme(Layout)
