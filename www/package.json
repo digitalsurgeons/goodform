@@ -6,6 +6,7 @@
     "@emotion/styled": "^10.0.10",
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
+    "@fortawesome/fontawesome-free": "~5.8.2",
     "@material-ui/system": "^3.0.0-alpha.2",
     "emotion-theming": "^10.0.10",
     "firebase": "^6.0.4",

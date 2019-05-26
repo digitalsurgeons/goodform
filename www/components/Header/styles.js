@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-export const Container = styled.header({
+export const Head = styled.header({
   display: 'flex',
   justifyContent: 'space-between',
   padding: '20px',
@@ -16,4 +16,12 @@ export const AuthButton = styled.a({
   justifyContent: 'center',
   padding: '5px 20px',
   textDecoration: 'none'
+})
+
+export const Avatar = styled.img({
+  borderRadius: '100%',
+  marginLeft: 'auto',
+  marginRight: 20,
+  height: 50,
+  width: 50
 })

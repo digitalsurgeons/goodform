@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import firebase from 'firebase/app'
+import Container from '@material-ui/core/Container'
+import { Head, AuthButton, Avatar } from './styles'
 import 'firebase/auth'
 import 'firebase/firestore'
-import { Container, AuthButton } from './styles'
+import '@fortawesome/fontawesome-free/js/all'
 
 function Header() {
   const [user, setUser] = useState({})
@@ -23,11 +25,10 @@ function Header() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         setUser(user)
-        alert('logged in!')
       }
     })
   }
-  function signIn() {
+  function auth() {
     if (!user.email) {
       firebase
         .auth()
@@ -39,24 +40,35 @@ function Header() {
           console.log(error)
         })
     } else {
-      alert('logged in!')
+      window.location = '/logout'
     }
   }
 
-  const login = user.email ? (
-    <span>Signed in</span>
+  const authBtn = user.email ? (
+    <span>Logout</span>
   ) : (
-    <span>Login with GitHub</span>
+    <div>
+      <i className="fab fa-github fa-lg" style={{ marginRight: 15 }} />
+      <span>Login with GitHub</span>
+    </div>
   )
+
+  let profileImage = ''
+  if (user.photoURL) {
+    profileImage = <Avatar src={user.photoURL} />
+  }
 
   return (
     <Container>
-      <a href="/">
-        <img src="/static/logo.png" />
-      </a>
-      <AuthButton onClick={signIn} href="#">
-        {login}
-      </AuthButton>
+      <Head>
+        <a href="/">
+          <img src="/static/logo.png" />
+        </a>
+        {profileImage}
+        <AuthButton onClick={auth} href="#">
+          {authBtn}
+        </AuthButton>
+      </Head>
     </Container>
   )
 }
