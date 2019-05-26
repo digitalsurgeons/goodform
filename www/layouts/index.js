@@ -1,21 +1,15 @@
 import { ThemeProvider } from 'emotion-theming'
-import { Global, css } from '@emotion/core'
 import Header from '../components/Header'
 import Head from 'next/head'
+import { withTheme } from '@material-ui/core/styles'
 
-const theme = {
-  spacing: 4,
-  palette: {
-    primary: '#007bff'
-  }
-}
-
-export default ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <Head>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
+const Dashboard = ({ theme, children }) => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Head>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
           @font-face {
             font-family: 'Graphik';
             src: url('/static/fonts/GraphikRegularWeb.eot');
@@ -71,18 +65,13 @@ export default ({ children }) => (
             font-weight: 800;
             font-style: normal;
           }`
-        }}
-      />
-    </Head>
-    <Global
-      styles={css`
-        * {
-          box-sizing: border-box;
-          font-family: 'Graphik';
-        }
-      `}
-    />
-    <Header />
-    {children}
-  </ThemeProvider>
-)
+          }}
+        />
+      </Head>
+      <Header />
+      {children}
+    </ThemeProvider>
+  )
+}
+
+export default withTheme(Dashboard)
