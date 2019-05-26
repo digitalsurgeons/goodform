@@ -64,7 +64,11 @@ const Dashboard = ({ theme, children }) => {
               url('/static/fonts/GraphikBlackWeb.svg#GraphikBlackWeb') format('svg');
             font-weight: 800;
             font-style: normal;
-          }`
+          }
+          * {
+            font-family: Graphik;
+          }
+          `
           }}
         />
       </Head>

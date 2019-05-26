@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import firebase from 'firebase/app'
-import Container from '@material-ui/core/Container'
 import { Head, AuthButton, Avatar } from './styles'
 import 'firebase/auth'
 import 'firebase/firestore'
 import '@fortawesome/fontawesome-free/js/all'
+import { Container } from '../../lib/helpers'
 
 function Header() {
   const [user, setUser] = useState({})
@@ -61,7 +61,7 @@ function Header() {
   }
 
   return (
-    <div>
+    <Container>
       <Head>
         <Link href="/">
           <a>
@@ -73,7 +73,7 @@ function Header() {
           {authBtn}
         </AuthButton>
       </Head>
-    </div>
+    </Container>
   )
 }
 
