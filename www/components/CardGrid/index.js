@@ -7,7 +7,7 @@ export default () => {
   return (
     <Grid container spacing={3}>
       <Grid item xs={4}>
-        <Link>
+        <Link href="/">
           <a>
             <Card raised>
               <CardContent>Card 1</CardContent>
@@ -16,7 +16,7 @@ export default () => {
         </Link>
       </Grid>
       <Grid item xs={4}>
-        <Link>
+        <Link href="/">
           <a>
             <Card raised>
               <CardContent>Card 2</CardContent>
@@ -25,7 +25,7 @@ export default () => {
         </Link>
       </Grid>
       <Grid item xs={4}>
-        <Link>
+        <Link href="/">
           <a>
             <Card raised>
               <CardContent>Card 3</CardContent>
